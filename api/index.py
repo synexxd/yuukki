@@ -21,71 +21,106 @@ scan_results = {
     "scan_history": []
 }
 
-def get_random_words_from_tdk(count=20):
+def get_random_words_from_tdk(count=25):
     """
-    Türkçe karakter içermeyen random kelimeler
+    Günlük hayatta sık kullanılan Türkçe ve İngilizce kelimeler
     """
     try:
-        # Türkçe karakter İÇERMEYEN kelimeler
-        tdk_words = [
-            "araba", "bilgisayar", "kitap", "defter", "kalem", "masa", "sandalye", 
-            "pencere", "kapi", "ev", "bahce", "agac", "cicek", "hayvan", "kus", 
-            "kedi", "kopek", "balik", "yemek", "su", "hava", "toprak", "tas", 
-            "demir", "altin", "gumus", "bakir", "kagit", "cam", "plastik", 
-            "dergi", "gazete", "televizyon", "radyo", "telefon", "internet", 
-            "program", "yazilim", "donanim", "sistem", "ag", "sunucu", "veri", 
-            "bilgi", "haber", "mesaj", "mektup", "paket", "kutu", "canta", 
-            "ayakkabi", "elbise", "sapka", "eldiven", "atki", "mont", "ceket", 
-            "pantolon", "etek", "gomlek", "tisort", "kazak", "hirka", "bermuda", 
-            "corap", "iclik", "mayo", "bikini", "sutyen", "kulot", "pijama", 
-            "terlik", "sandalet", "bot", "cizme", "spor", "kosu", "yuruyus", 
-            "yuzme", "futbol", "basketbol", "voleybol", "tenis", "yuzme", 
-            "jimnastik", "boks", "gures", "judo", "karate", "taekwondo", "aikido", 
-            "yoga", "pilates", "meditasyon", "nehir", "gol", "deniz", "okyanus", 
-            "ada", "yarimada", "kita", "dag", "tepe", "vadi", "ova", "plato", 
-            "orman", "koru", "bahce", "tarla", "ciftlik", "koy", "kasaba", "sehir", 
-            "ilce", "il", "bolge", "ulke", "kita", "dunya", "evren", "uzay", 
-            "gezegen", "yildiz", "galaksi", "samanyolu", "andromeda", "uzayli",
-            "mac", "sicak", "soguk", "isik", "karanlik", "ses", "muzik", "film", 
-            "dizi", "oyun", "kart", "zar", "pul", "para", "bank", "kredi", 
-            "hesap", "numara", "sifre", "guvenlik", "kilit", "anahtar", "kapi", 
-            "pencere", "duvar", "tavan", "zemin", "hal", "perde", "lamba", 
-            "sis", "bulut", "yagmur", "kar", "dolu", "firtina", "kasirga", 
-            "deprem", "sel", "yangin", "kaza", "saglik", "hastane", "doktor", 
-            "hemstre", "ilac", "tedavi", "ameliyat", "as", "bagisiklik", 
-            "spor", "antrenman", "mac", "takim", "oyuncu", "saha", "stadyum", 
-            "salon", "havuz", "deniz", "plaj", "kum", "tas", "kaya", "magara", 
-            "orman", "agac", "yaprak", "dal", "koku", "meyve", "sebze", "et", 
-            "sut", "yumurta", "ekmek", "peynir", "zeytin", "bal", "recel", 
-            "cay", "kahve", "sut", "meyve", "sebze", "makarna", "pilav", "corba", 
-            "salata", "tatli", "kek", "pasta", "borek", "pizza", "hamburger", 
-            "sandvic", "tost", "salata", "mez", "kebap", "lahmacun", "pide", 
-            "baklava", "kadayif", "lokum", "helva", "sutlac", "kazandibi", 
-            "komposto", "hos", "afiyet", "lezzet", "tuz", "seker", "biber", 
-            "baharat", "yag", "sirke", "limon", "sarimsak", "sogan", "domates", 
-            "biber", "patlican", "kabak", "havuc", "patates", "sogan", "marul", 
-            "maydanoz", "tere", "roka", "nane", "fesle", "kimyon", "zerdecal", 
-            "zencefil", "tarcin", "karanfil", "vanilya", "kakao", "cikolata", 
-            "sekerleme", "sakiz", "cubuk", "kraker", "bisk", "cips", "patlak", 
-            "misir", "findik", "ceviz", "badem", "fistik", "kayisi", "uzum", 
-            "incir", "nar", "elma", "armut", "ayva", "muz", "portakal", "mandalina", 
-            "limon", "greyfurt", "kivi", "ananas", "karpuz", "kavun", "cilek", 
-            "visne", "kiraz", "erik", "seftali", "kayisi", "dut", "ahududu", 
-            "bogurtlen", "mavi", "yesil", "kirmizi", "sari", "turuncu", "mor", 
-            "pembe", "kahve", "siyah", "beyaz", "gri", "gumus", "altin", "bronz",
-            "alpha", "beta", "gamma", "delta", "omega", "sigma", "lambda", "zeta",
-            "tech", "code", "web", "net", "app", "soft", "hard", "data", "info",
-            "cloud", "server", "client", "admin", "user", "guest", "test", "demo"
+        # Günlük hayatta sık kullanılan Türkçe ve İngilizce kelimeler (Türkçe karakter YOK)
+        common_words = [
+            # Türkçe kelimeler (Türkçe karakter yok)
+            "araba", "ev", "is", "okul", "sokak", "cadde", "park", "bahce", "oda", "mutfak",
+            "banyo", "yatak", "masa", "sandalye", "kapı", "pencere", "perde", "halı", "lamba",
+            "telefon", "bilgisayar", "tablet", "klavye", "fare", "ekran", "yazıcı", "kamera",
+            "televizyon", "radyo", "muzik", "film", "dizi", "oyun", "kitap", "defter", "kalem",
+            "canta", "ayakkabı", "elbise", "gomlek", "pantolon", "etek", "ceket", "mont", "kazak",
+            "tisort", "sweatshirt", "ayak", "el", "bas", "yuz", "goz", "kulak", "burun", "agız",
+            "sac", "dis", "dil", "boyun", "omuz", "kol", "bilek", "parmak", "gogus", "karın",
+            "sırt", "kalca", "bacak", "diz", "ayak", "topuk", "tırnak", "cilt", "kan", "kemik",
+            "kas", "beyin", "kalp", "akciger", "mide", "karaciger", "bobrek", "mesane", "bagırsak",
+            "yemek", "su", "ekmek", "peynir", "zeytin", "yumurta", "sut", "yoğurt", "bal", "recel",
+            "cay", "kahve", "meyve", "sebze", "et", "tavuk", "balık", "makarna", "pilav", "corba",
+            "salata", "tatlı", "kek", "pasta", "dondurma", "cikolata", "bisküvi", "kraker", "cips",
+            "mama", "bebek", "cocuk", "genc", "yetişkin", "yaşlı", "adam", "kadın", "erkek", "kız",
+            "oglan", "anne", "baba", "kardes", "dede", "nene", "amca", "hala", "dayı", "teyze",
+            "arkadas", "komşu", "is", "meslek", "doktor", "muhendis", "ogretmen", "ogrenci", "memur",
+            "asker", "polis", "itfaiye", "suruçu", "avukat", "hakim", "savcı", "mimar", "ressam",
+            "muzisyen", "yazar", "sair", "gazeteci", "sporcu", "futbol", "basketbol", "voleybol",
+            "tenis", "yuzme", "kosu", "yuruyuş", "bisiklet", "araba", "otobus", "tren", "ucak",
+            "gemi", "metro", "taksi", "tramvay", "durak", "istasyon", "liman", "havalimanı",
+            "yol", "harita", "navigasyon", "trafik", "ısık", "kavşak", "köprü", "tünel", "otoyol",
+            
+            # İngilizce kelimeler
+            "car", "home", "house", "work", "job", "school", "street", "road", "park", "garden",
+            "room", "kitchen", "bathroom", "bed", "table", "chair", "door", "window", "curtain",
+            "carpet", "lamp", "phone", "computer", "laptop", "tablet", "keyboard", "mouse", "screen",
+            "printer", "camera", "tv", "television", "radio", "music", "movie", "series", "game",
+            "book", "notebook", "pen", "pencil", "bag", "shoes", "clothes", "shirt", "pants",
+            "skirt", "jacket", "coat", "sweater", "tshirt", "sweatshirt", "foot", "hand", "head",
+            "face", "eye", "ear", "nose", "mouth", "hair", "tooth", "tongue", "neck", "shoulder",
+            "arm", "wrist", "finger", "chest", "stomach", "back", "hip", "leg", "knee", "ankle",
+            "heel", "nail", "skin", "blood", "bone", "muscle", "brain", "heart", "lung", "stomach",
+            "liver", "kidney", "bladder", "intestine", "food", "water", "bread", "cheese", "olive",
+            "egg", "milk", "yogurt", "honey", "jam", "tea", "coffee", "fruit", "vegetable", "meat",
+            "chicken", "fish", "pasta", "rice", "soup", "salad", "dessert", "cake", "icecream",
+            "chocolate", "cookie", "cracker", "chips", "baby", "child", "kid", "young", "adult",
+            "old", "man", "woman", "male", "female", "boy", "girl", "mother", "father", "parent",
+            "brother", "sister", "sibling", "grandfather", "grandmother", "uncle", "aunt", "friend",
+            "neighbor", "work", "job", "profession", "doctor", "engineer", "teacher", "student",
+            "officer", "soldier", "police", "firefighter", "driver", "lawyer", "judge", "architect",
+            "artist", "painter", "musician", "writer", "poet", "journalist", "athlete", "sports",
+            "football", "soccer", "basketball", "volleyball", "tennis", "swimming", "running",
+            "walking", "bicycle", "bike", "bus", "train", "plane", "airplane", "ship", "boat",
+            "subway", "taxi", "tram", "stop", "station", "port", "airport", "road", "street",
+            "map", "navigation", "traffic", "light", "intersection", "bridge", "tunnel", "highway",
+            
+            # Teknoloji kelimeleri
+            "tech", "code", "web", "internet", "network", "wifi", "data", "cloud", "server",
+            "client", "app", "application", "software", "hardware", "device", "gadget", "digital",
+            "online", "offline", "website", "blog", "social", "media", "email", "message", "chat",
+            "video", "audio", "image", "photo", "picture", "file", "folder", "document", "pdf",
+            "word", "excel", "powerpoint", "windows", "mac", "linux", "android", "ios", "apple",
+            "google", "microsoft", "amazon", "facebook", "instagram", "twitter", "youtube",
+            "whatsapp", "telegram", "discord", "zoom", "skype", "meet", "team", "work", "office",
+            
+            # Renkler
+            "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black",
+            "white", "gray", "silver", "gold", "color", "colour", "dark", "light", "bright",
+            
+            # Sayılar
+            "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+            "first", "second", "third", "fourth", "fifth", "number", "count", "digital",
+            
+            # Zaman ve mevsimler
+            "time", "day", "night", "morning", "evening", "afternoon", "week", "month", "year",
+            "today", "tomorrow", "yesterday", "now", "later", "soon", "early", "late", "fast",
+            "slow", "quick", "minute", "hour", "second", "clock", "watch", "calendar", "date",
+            "spring", "summer", "autumn", "fall", "winter", "season", "weather", "sun", "rain",
+            "snow", "wind", "cloud", "storm", "hot", "cold", "warm", "cool", "dry", "wet",
+            
+            # Duygular
+            "happy", "sad", "angry", "excited", "bored", "tired", "sleepy", "hungry", "thirsty",
+            "love", "like", "hate", "want", "need", "hope", "fear", "worry", "think", "feel",
+            
+            # Eylemler
+            "go", "come", "run", "walk", "jump", "swim", "eat", "drink", "sleep", "wake",
+            "work", "play", "study", "read", "write", "speak", "talk", "listen", "watch",
+            "see", "look", "find", "search", "buy", "sell", "give", "take", "make", "create",
+            "build", "break", "fix", "clean", "wash", "cook", "drive", "fly", "travel", "visit"
         ]
         
         # Türkçe karakter kontrolü yap ve filtrele
         filtered_words = []
-        for word in tdk_words:
+        for word in common_words:
+            # Türkçe karakter kontrolü (ı, İ, ğ, Ğ, ü, Ü, ş, Ş, ö, Ö, ç, Ç)
             if not any(char in word for char in ['ı', 'İ', 'ğ', 'Ğ', 'ü', 'Ü', 'ş', 'Ş', 'ö', 'Ö', 'ç', 'Ç']):
                 filtered_words.append(word)
         
+        # Benzersiz kelimeler
+        unique_words = list(set(filtered_words))
+        
         # Rastgele kelimeler seç
-        selected_words = random.sample(filtered_words, min(count, len(filtered_words)))
+        selected_words = random.sample(unique_words, min(count, len(unique_words)))
         logger.info(f"Seçilen {len(selected_words)} kelime: {selected_words}")
         return selected_words
         
@@ -146,7 +181,7 @@ def check_discord_mail(box_name):
             }
 
         # Discord maillerini ara
-        discord_keywords = ['discord', 'verify', 'confirmation', 'activation', 'code', 'security', 'login']
+        discord_keywords = ['discord', 'verify', 'confirmation', 'activation', 'code', 'security', 'login', 'account']
         discord_mails = []
         
         for subject in mail_subjects:
@@ -171,7 +206,7 @@ def check_discord_mail(box_name):
     except Exception as e:
         return {"status": "error", "message": f"Beklenmeyen hata: {str(e)}", "box_name": box_name}
 
-# HTML Template
+# HTML Template (Aynı kalacak, yukarıdaki template'i kullan)
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="tr">
@@ -278,7 +313,7 @@ HTML_TEMPLATE = """
 
     <div class="container">
         <h2>🔧 İşlemler</h2>
-        <button class="btn btn-scan" onclick="startScan()">🚀 Tarama Başlat (15 Rastgele Kelime)</button>
+        <button class="btn btn-scan" onclick="startScan()">🚀 Tarama Başlat (25 Rastgele Kelime)</button>
         <button class="btn" onclick="location.reload()">🔄 Sayfayı Yenile</button>
         
         <div id="loading" class="loading">
@@ -403,7 +438,7 @@ def scan_boxes():
     """Rastgele kelimelerle Yopmail kutularını tara"""
     try:
         # Rastgele kelimeler al
-        words = get_random_words_from_tdk(15)
+        words = get_random_words_from_tdk(25)
         results = []
         discord_found = []
         
@@ -462,7 +497,7 @@ def scan_boxes():
         if discord_found:
             logger.info(f"🎯 TARAMA SONUCU: {len(discord_found)} kutuda Discord maili bulundu!")
             for found in discord_found:
-                logger.info(f"   📧 {found['box_name']}: {found['emails']}")
+                logger.info(f"   📧 {found['box_name']}: {found['discord_emails']}")
         
         return jsonify(response)
         
