@@ -21,97 +21,98 @@ scan_results = {
     "scan_history": []
 }
 
-def get_random_words_from_tdk(count=25):
+def get_random_words_from_tdk(count=30):
     """
-    Günlük hayatta sık kullanılan Türkçe ve İngilizce kelimeler
+    Eski Discord Yopmail hesaplarında bulunabilecek popüler kelimeler
     """
     try:
-        # Günlük hayatta sık kullanılan Türkçe ve İngilizce kelimeler (Türkçe karakter YOK)
-        common_words = [
-            # Türkçe kelimeler (Türkçe karakter yok)
-            "araba", "ev", "is", "okul", "sokak", "cadde", "park", "bahce", "oda", "mutfak",
-            "banyo", "yatak", "masa", "sandalye", "kapı", "pencere", "perde", "halı", "lamba",
-            "telefon", "bilgisayar", "tablet", "klavye", "fare", "ekran", "yazıcı", "kamera",
-            "televizyon", "radyo", "muzik", "film", "dizi", "oyun", "kitap", "defter", "kalem",
-            "canta", "ayakkabı", "elbise", "gomlek", "pantolon", "etek", "ceket", "mont", "kazak",
-            "tisort", "sweatshirt", "ayak", "el", "bas", "yuz", "goz", "kulak", "burun", "agız",
-            "sac", "dis", "dil", "boyun", "omuz", "kol", "bilek", "parmak", "gogus", "karın",
-            "sırt", "kalca", "bacak", "diz", "ayak", "topuk", "tırnak", "cilt", "kan", "kemik",
-            "kas", "beyin", "kalp", "akciger", "mide", "karaciger", "bobrek", "mesane", "bagırsak",
-            "yemek", "su", "ekmek", "peynir", "zeytin", "yumurta", "sut", "yoğurt", "bal", "recel",
-            "cay", "kahve", "meyve", "sebze", "et", "tavuk", "balık", "makarna", "pilav", "corba",
-            "salata", "tatlı", "kek", "pasta", "dondurma", "cikolata", "bisküvi", "kraker", "cips",
-            "mama", "bebek", "cocuk", "genc", "yetişkin", "yaşlı", "adam", "kadın", "erkek", "kız",
-            "oglan", "anne", "baba", "kardes", "dede", "nene", "amca", "hala", "dayı", "teyze",
-            "arkadas", "komşu", "is", "meslek", "doktor", "muhendis", "ogretmen", "ogrenci", "memur",
-            "asker", "polis", "itfaiye", "suruçu", "avukat", "hakim", "savcı", "mimar", "ressam",
-            "muzisyen", "yazar", "sair", "gazeteci", "sporcu", "futbol", "basketbol", "voleybol",
-            "tenis", "yuzme", "kosu", "yuruyuş", "bisiklet", "araba", "otobus", "tren", "ucak",
-            "gemi", "metro", "taksi", "tramvay", "durak", "istasyon", "liman", "havalimanı",
-            "yol", "harita", "navigasyon", "trafik", "ısık", "kavşak", "köprü", "tünel", "otoyol",
+        # Eski Discord Yopmail hesaplarında yaygın kullanılan kelimeler
+        discord_common_words = [
+            # Discord ile ilgili kelimeler
+            "discord", "diskor", "dis", "cord", "dc", "ds", "disco", "disord",
             
-            # İngilizce kelimeler
-            "car", "home", "house", "work", "job", "school", "street", "road", "park", "garden",
-            "room", "kitchen", "bathroom", "bed", "table", "chair", "door", "window", "curtain",
-            "carpet", "lamp", "phone", "computer", "laptop", "tablet", "keyboard", "mouse", "screen",
-            "printer", "camera", "tv", "television", "radio", "music", "movie", "series", "game",
-            "book", "notebook", "pen", "pencil", "bag", "shoes", "clothes", "shirt", "pants",
-            "skirt", "jacket", "coat", "sweater", "tshirt", "sweatshirt", "foot", "hand", "head",
-            "face", "eye", "ear", "nose", "mouth", "hair", "tooth", "tongue", "neck", "shoulder",
-            "arm", "wrist", "finger", "chest", "stomach", "back", "hip", "leg", "knee", "ankle",
-            "heel", "nail", "skin", "blood", "bone", "muscle", "brain", "heart", "lung", "stomach",
-            "liver", "kidney", "bladder", "intestine", "food", "water", "bread", "cheese", "olive",
-            "egg", "milk", "yogurt", "honey", "jam", "tea", "coffee", "fruit", "vegetable", "meat",
-            "chicken", "fish", "pasta", "rice", "soup", "salad", "dessert", "cake", "icecream",
-            "chocolate", "cookie", "cracker", "chips", "baby", "child", "kid", "young", "adult",
-            "old", "man", "woman", "male", "female", "boy", "girl", "mother", "father", "parent",
-            "brother", "sister", "sibling", "grandfather", "grandmother", "uncle", "aunt", "friend",
-            "neighbor", "work", "job", "profession", "doctor", "engineer", "teacher", "student",
-            "officer", "soldier", "police", "firefighter", "driver", "lawyer", "judge", "architect",
-            "artist", "painter", "musician", "writer", "poet", "journalist", "athlete", "sports",
-            "football", "soccer", "basketball", "volleyball", "tennis", "swimming", "running",
-            "walking", "bicycle", "bike", "bus", "train", "plane", "airplane", "ship", "boat",
-            "subway", "taxi", "tram", "stop", "station", "port", "airport", "road", "street",
-            "map", "navigation", "traffic", "light", "intersection", "bridge", "tunnel", "highway",
+            # Gaming ve internet kültürü
+            "gamer", "player", "game", "play", "win", "lose", "winwin", "pro",
+            "noob", "hacker", "hack", "cheat", "cheater", "mod", "admin", "owner",
+            "boss", "king", "queen", "star", "legend", "god", "demon", "angel",
+            "monster", "dragon", "wolf", "fox", "cat", "dog", "bird", "lion",
+            "tiger", "bear", "snake", "shark", "fish", "horse", "eagle", "hawk",
             
-            # Teknoloji kelimeleri
-            "tech", "code", "web", "internet", "network", "wifi", "data", "cloud", "server",
-            "client", "app", "application", "software", "hardware", "device", "gadget", "digital",
-            "online", "offline", "website", "blog", "social", "media", "email", "message", "chat",
-            "video", "audio", "image", "photo", "picture", "file", "folder", "document", "pdf",
-            "word", "excel", "powerpoint", "windows", "mac", "linux", "android", "ios", "apple",
-            "google", "microsoft", "amazon", "facebook", "instagram", "twitter", "youtube",
-            "whatsapp", "telegram", "discord", "zoom", "skype", "meet", "team", "work", "office",
+            # Popüler oyun isimleri/kısaltmaları
+            "minecraft", "mine", "craft", "mc", "fortnite", "fort", "fn", "pubg",
+            "valorant", "valo", "csgo", "cs", "lol", "league", "dota", "overwatch",
+            "ow", "gta", "gtav", "rockstar", "steam", "epic", "origin", "ubisoft",
+            "blizzard", "riot", "mojang", "xbox", "playstation", "ps", "nintendo",
+            "switch", "pc", "computer", "laptop", "mobile", "phone",
             
-            # Renkler
-            "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black",
-            "white", "gray", "silver", "gold", "color", "colour", "dark", "light", "bright",
+            # Teknoloji ve internet
+            "tech", "geek", "nerd", "code", "coder", "programmer", "developer",
+            "hack", "cyber", "digital", "net", "web", "online", "internet",
+            "wifi", "network", "data", "cloud", "server", "client", "app",
+            "software", "hardware", "device", "gadget", "phone", "smartphone",
             
-            # Sayılar
+            # Kullanıcı adı formatları
+            "xX", "XX", "Mr", "Ms", "Mrs", "Dr", "Prof", "Lord", "Sir", "Lady",
+            "Real", "The", "Official", "Original", "New", "Old", "Young", "Big",
+            "Small", "Fast", "Slow", "Smart", "Cool", "Hot", "Cold", "Dark",
+            "Light", "Red", "Blue", "Green", "Black", "White", "Gold", "Silver",
+            
+            # Sayılar ve kombinasyonlar
             "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
             "first", "second", "third", "fourth", "fifth", "number", "count", "digital",
+            "123", "456", "789", "000", "111", "222", "333", "444", "555", "666",
+            "777", "888", "999", "007", "008", "009", "100", "200", "300", "420",
+            "69", "99", "88", "77", "66", "55", "44", "33", "22", "11",
             
-            # Zaman ve mevsimler
-            "time", "day", "night", "morning", "evening", "afternoon", "week", "month", "year",
-            "today", "tomorrow", "yesterday", "now", "later", "soon", "early", "late", "fast",
-            "slow", "quick", "minute", "hour", "second", "clock", "watch", "calendar", "date",
-            "spring", "summer", "autumn", "fall", "winter", "season", "weather", "sun", "rain",
-            "snow", "wind", "cloud", "storm", "hot", "cold", "warm", "cool", "dry", "wet",
+            # Eski internet kullanıcı adı trendleri
+            "master", "shadow", "dark", "night", "day", "fire", "ice", "water",
+            "earth", "air", "wind", "storm", "thunder", "lightning", "rain",
+            "snow", "sun", "moon", "star", "sky", "space", "time", "world",
+            "life", "death", "blood", "soul", "spirit", "ghost", "phantom",
+            "killer", "slayer", "hunter", "warrior", "fighter", "soldier",
+            "ninja", "samurai", "viking", "pirate", "zombie", "alien", "robot",
             
-            # Duygular
-            "happy", "sad", "angry", "excited", "bored", "tired", "sleepy", "hungry", "thirsty",
-            "love", "like", "hate", "want", "need", "hope", "fear", "worry", "think", "feel",
+            # Popüler kültür
+            "marvel", "dc", "batman", "superman", "spiderman", "ironman",
+            "captain", "america", "thor", "hulk", "avengers", "justice",
+            "league", "starwars", "jedi", "sith", "vader", "skywalker",
+            "harry", "potter", "hermione", "ron", "voldemort", "hogwarts",
+            "lord", "rings", "gandalf", "frodo", "aragorn", "legolas",
+            "gameofthrones", "jonsnow", "khaleesi", "tyrion", "winter",
             
-            # Eylemler
-            "go", "come", "run", "walk", "jump", "swim", "eat", "drink", "sleep", "wake",
-            "work", "play", "study", "read", "write", "speak", "talk", "listen", "watch",
-            "see", "look", "find", "search", "buy", "sell", "give", "take", "make", "create",
-            "build", "break", "fix", "clean", "wash", "cook", "drive", "fly", "travel", "visit"
+            # Basit ve yaygın kelimeler
+            "hello", "hi", "hey", "bye", "good", "bad", "nice", "cool",
+            "awesome", "amazing", "great", "best", "worst", "fun", "funny",
+            "lol", "lmao", "rofl", "haha", "hehe", "yolo", "swag", "epic",
+            "fail", "win", "pwn", "own", "pwned", "owned", "rekt", "pog",
+            
+            # Türkçe gaming/internet kültürü
+            "turkey", "turk", "turkiye", "istanbul", "ankara", "izmir",
+            "bursa", "antalya", "adana", "kocaeli", "trabzon", "eskisehir",
+            "kral", "kralice", "padişah", "sultan", "bey", "beyefendi",
+            "hanim", "hanimefendi", "abi", "kardes", "baba", "anne",
+            "oglan", "kiz", "cocuk", "bebek", "adam", "insan",
+            
+            # Eski Yopmail trendleri
+            "temp", "test", "demo", "example", "sample", "fake", "dummy",
+            "trial", "free", "premium", "vip", "prime", "basic", "pro",
+            "ultimate", "extreme", "ultimate", "mega", "super", "hyper",
+            "ultra", "omega", "alpha", "beta", "gamma", "delta", "sigma",
+            
+            # Kısaltmalar ve slang
+            "afk", "brb", "gtg", "idk", "imo", "imho", "irl", "jk", "lmk",
+            "np", "omg", "smh", "tbh", "tbt", "wtf", "yolo", "fomo",
+            "goat", "sus", "cap", "bet", "fr", "ong", "dead", "alive",
+            
+            # Random kombinasyonlar
+            "ax", "bx", "cx", "dx", "ex", "fx", "gx", "hx", "ix", "jx",
+            "kx", "lx", "mx", "nx", "ox", "px", "qx", "rx", "sx", "tx",
+            "ux", "vx", "wx", "xx", "yx", "zx", "xa", "xb", "xc", "xd"
         ]
         
         # Türkçe karakter kontrolü yap ve filtrele
         filtered_words = []
-        for word in common_words:
+        for word in discord_common_words:
             # Türkçe karakter kontrolü (ı, İ, ğ, Ğ, ü, Ü, ş, Ş, ö, Ö, ç, Ç)
             if not any(char in word for char in ['ı', 'İ', 'ğ', 'Ğ', 'ü', 'Ü', 'ş', 'Ş', 'ö', 'Ö', 'ç', 'Ç']):
                 filtered_words.append(word)
@@ -127,7 +128,7 @@ def get_random_words_from_tdk(count=25):
     except Exception as e:
         logger.error(f"Kelimeler alınırken hata: {str(e)}")
         # Fallback kelimeler
-        return ["test", "demo", "example", "sample", "temp", "random", "check", "mail", "discord", "verify"]
+        return ["discord", "gamer", "player", "pro", "hacker", "minecraft", "fortnite", "valorant", "lol", "csgo"]
 
 def check_discord_mail(box_name):
     """
@@ -181,7 +182,11 @@ def check_discord_mail(box_name):
             }
 
         # Discord maillerini ara
-        discord_keywords = ['discord', 'verify', 'confirmation', 'activation', 'code', 'security', 'login', 'account']
+        discord_keywords = [
+            'discord', 'verify', 'confirmation', 'activation', 'code', 'security', 
+            'login', 'account', 'welcome', 'registration', 'verify your email',
+            'email verification', 'account confirmation', 'discord account'
+        ]
         discord_mails = []
         
         for subject in mail_subjects:
@@ -196,7 +201,8 @@ def check_discord_mail(box_name):
             "discord_emails": discord_mails,
             "has_discord": len(discord_mails) > 0,
             "all_emails": mail_subjects[:5],  # İlk 5 maili göster
-            "yopmail_url": f"https://yopmail.com/en/inbox.php?login={box_name}"
+            "yopmail_url": f"https://yopmail.com/en/inbox.php?login={box_name}",
+            "scan_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
         
         return result
@@ -206,7 +212,7 @@ def check_discord_mail(box_name):
     except Exception as e:
         return {"status": "error", "message": f"Beklenmeyen hata: {str(e)}", "box_name": box_name}
 
-# HTML Template (Aynı kalacak, yukarıdaki template'i kullan)
+# HTML Template (Aynı kalacak)
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="tr">
@@ -220,7 +226,8 @@ HTML_TEMPLATE = """
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #0d0f12;
+            color: #ffffff;
         }
         .header {
             background: linear-gradient(135deg, #5865F2, #7289DA);
@@ -231,22 +238,16 @@ HTML_TEMPLATE = """
             margin-bottom: 30px;
         }
         .container {
-            background: white;
+            background: #1e2124;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             margin-bottom: 20px;
+            border: 1px solid #36393f;
         }
         .discord-box {
-            background: #edf2ff;
+            background: #2f3136;
             border-left: 4px solid #5865F2;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        .no-discord {
-            background: #f8f9fa;
-            border-left: 4px solid #6c757d;
             padding: 15px;
             margin: 10px 0;
             border-radius: 5px;
@@ -260,6 +261,7 @@ HTML_TEMPLATE = """
             cursor: pointer;
             font-size: 16px;
             margin: 5px;
+            transition: background 0.3s;
         }
         .btn:hover {
             background: #4752c4;
@@ -278,18 +280,18 @@ HTML_TEMPLATE = """
             margin: 20px 0;
         }
         .stat-card {
-            background: white;
+            background: #2f3136;
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .discord-count {
             background: #57F287;
             color: black;
         }
         .email-item {
-            background: #f8f9fa;
+            background: #36393f;
             padding: 10px;
             margin: 5px 0;
             border-radius: 5px;
@@ -303,22 +305,29 @@ HTML_TEMPLATE = """
         .success { color: #57F287; }
         .error { color: #ED4245; }
         .warning { color: #FEE75C; }
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🎯 Discord Mail Scanner</h1>
-        <p>Yopmail hesaplarında Discord kayıt maillerini tarar</p>
+        <h1>🎯 Eski Discord Yopmail Scanner</h1>
+        <p>Eski Discord hesaplarında kullanılmış Yopmail kutularını tarar</p>
     </div>
 
     <div class="container">
         <h2>🔧 İşlemler</h2>
-        <button class="btn btn-scan" onclick="startScan()">🚀 Tarama Başlat (25 Rastgele Kelime)</button>
+        <button class="btn btn-scan" onclick="startScan()">🚀 Tarama Başlat (30 Gaming Kelime)</button>
         <button class="btn" onclick="location.reload()">🔄 Sayfayı Yenile</button>
         
         <div id="loading" class="loading">
             <h3>⏳ Tarama devam ediyor...</h3>
-            <p>Lütfen bekleyiniz. Bu işlem birkaç dakika sürebilir.</p>
+            <p>Eski Discord hesapları taranıyor. Bu işlem 30-40 saniye sürebilir.</p>
         </div>
     </div>
 
@@ -341,7 +350,7 @@ HTML_TEMPLATE = """
     </div>
 
     <div class="container">
-        <h2>🎯 Discord Bulunan Hesaplar</h2>
+        <h2>🎯 Bulunan Eski Discord Hesapları</h2>
         {% if discord_boxes %}
             {% for box in discord_boxes %}
             <div class="discord-box">
@@ -356,7 +365,7 @@ HTML_TEMPLATE = """
             </div>
             {% endfor %}
         {% else %}
-            <p>Henüz Discord maili bulunamadı. Tarama başlatın!</p>
+            <p>Henüz eski Discord hesabı bulunamadı. Tarama başlatın!</p>
         {% endif %}
     </div>
 
@@ -365,7 +374,7 @@ HTML_TEMPLATE = """
         {% if last_scan_details %}
             <p><strong>Tarama Zamanı:</strong> {{ last_scan_details.timestamp }}</p>
             <p><strong>Taranan Kelimeler:</strong> {{ last_scan_details.words|join(', ') }}</p>
-            <p><strong>Sonuç:</strong> {{ last_scan_details.discord_found }} adet Discord maili bulundu</p>
+            <p><strong>Sonuç:</strong> {{ last_scan_details.discord_found }} adet eski Discord hesabı bulundu</p>
         {% else %}
             <p>Henüz tarama yapılmadı.</p>
         {% endif %}
@@ -387,12 +396,12 @@ HTML_TEMPLATE = """
                 });
         }
         
-        // 30 saniyede bir sayfayı yenile (opsiyonel)
+        // 20 saniyede bir sayfayı yenile
         setInterval(() => {
             if (document.getElementById('loading').style.display === 'none') {
                 location.reload();
             }
-        }, 30000);
+        }, 20000);
     </script>
 </body>
 </html>
@@ -405,7 +414,7 @@ def home():
         total_scanned=scan_results["total_scanned"],
         discord_count=len(scan_results["discord_boxes"]),
         last_scan=scan_results["last_scan"] or "Henüz tarama yapılmadı",
-        discord_boxes=scan_results["discord_boxes"][-10:],  # Son 10 kayıt
+        discord_boxes=scan_results["discord_boxes"][-15:],  # Son 15 kayıt
         last_scan_details=scan_results["scan_history"][-1] if scan_results["scan_history"] else None
     )
 
@@ -429,7 +438,7 @@ def check_single_box(box_name):
             scan_results["discord_boxes"].append(discord_data)
             scan_results["total_scanned"] += 1
         
-        logger.info(f"🎯 DİSCORD BULUNDU: {box_name} - {result['discord_emails']}")
+        logger.info(f"🎯 ESKİ DİSCORD BULUNDU: {box_name} - {result['discord_emails']}")
     
     return jsonify(result)
 
@@ -438,11 +447,11 @@ def scan_boxes():
     """Rastgele kelimelerle Yopmail kutularını tara"""
     try:
         # Rastgele kelimeler al
-        words = get_random_words_from_tdk(25)
+        words = get_random_words_from_tdk(30)
         results = []
         discord_found = []
         
-        logger.info(f"🔍 {len(words)} kelime ile tarama başlatılıyor...")
+        logger.info(f"🔍 {len(words)} gaming kelime ile eski Discord taraması başlatılıyor...")
         
         for word in words:
             # Her istek arasında kısa bekleme
@@ -467,7 +476,7 @@ def scan_boxes():
                     scan_results["discord_boxes"].append(discord_data)
                     discord_found.append(discord_data)
                 
-                logger.info(f"🎯 DİSCORD BULUNDU: {word} - {result['discord_emails']}")
+                logger.info(f"🎯 ESKİ DİSCORD BULUNDU: {word} - {result['discord_emails']}")
             
             scan_results["total_scanned"] += 1
         
@@ -495,7 +504,7 @@ def scan_boxes():
         
         # Discord bulunanları özel logla
         if discord_found:
-            logger.info(f"🎯 TARAMA SONUCU: {len(discord_found)} kutuda Discord maili bulundu!")
+            logger.info(f"🎯 TARAMA SONUCU: {len(discord_found)} eski Discord hesabı bulundu!")
             for found in discord_found:
                 logger.info(f"   📧 {found['box_name']}: {found['discord_emails']}")
         
